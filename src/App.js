@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
-
+import Header from "./Components/header";
+import { useState, useEffect } from "react";
+import Receipe from "./Components/receipe";
 function App() {
+  const [receipeList, setReceipeList] = useState([]);
+  const pull_data = (data) => {
+    setReceipeList(data);
+    preload();
+  };
+
+  const preload = () => {
+    if (typeof window !== undefined) {
+      if (localStorage.getItem("receipeList") !== null) {
+        setReceipeList(JSON.parse(localStorage.getItem("receipeList")));
+      }
+    }
+  };
+
+  useEffect(() => {
+    preload();
+  }, []);
+
+  console.log(receipeList);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="head">
+        <Header addChild={pull_data} title="receipe-box" />
+        <Receipe value={receipeList} />
+      </div>
+    </>
   );
 }
 
