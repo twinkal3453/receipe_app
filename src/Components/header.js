@@ -54,17 +54,13 @@ const Header = (props) => {
           id: Date.now(),
         });
         localStorage.setItem("receipeList", JSON.stringify(receipeList));
-        handleClose();
         preload();
+        handleClose();
       }
     } else {
       alert("all fields should be filled");
     }
   };
-
-  // useEffect(() => {
-  //   localStorage.setItem("receipeList", JSON.stringify(receipeList));
-  // }, [receipeList]);
 
   const handleClickOpen = () => {
     setOpen(true);

@@ -2,16 +2,34 @@ import Header from "./Components/header";
 import { useState, useEffect } from "react";
 import Receipe from "./Components/receipe";
 function App() {
-  const [receipeList, setReceipeList] = useState([]);
+  const [receipeLists, setReceipeLists] = useState([]);
+
   const pull_data = (data) => {
-    setReceipeList(data);
+    setReceipeLists(data);
     preload();
+  };
+
+  const extract_data = (data) => {
+    let receipe = [];
+    if (typeof window !== undefined) {
+      if (localStorage.getItem("receipeList")) {
+        receipe = JSON.parse(localStorage.getItem("receipeList"));
+      }
+      receipe.forEach((item, i) => {
+        if (item.id === data) {
+          receipe.splice(i, 1);
+        }
+      });
+      localStorage.setItem("receipeList", JSON.stringify(receipe));
+    }
+    preload();
+    return receipe;
   };
 
   const preload = () => {
     if (typeof window !== undefined) {
       if (localStorage.getItem("receipeList") !== null) {
-        setReceipeList(JSON.parse(localStorage.getItem("receipeList")));
+        setReceipeLists(JSON.parse(localStorage.getItem("receipeList")));
       }
     }
   };
@@ -20,12 +38,11 @@ function App() {
     preload();
   }, []);
 
-  console.log(receipeList);
   return (
     <>
       <div className="head">
         <Header addChild={pull_data} title="receipe-box" />
-        <Receipe value={receipeList} />
+        <Receipe deleteChild={extract_data} value={receipeLists} />
       </div>
     </>
   );
