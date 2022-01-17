@@ -21,6 +21,7 @@
 .delete__button:hover {
   color: red;
 }
+
 @media only screen and (max-width: 770px) {
   .grid_main {
     padding: 2rem 0.5rem;

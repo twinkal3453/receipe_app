@@ -6,7 +6,6 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import TextField from "@mui/material/TextField";
-import Divider from "@mui/material/Divider";
 import "./css/header.css";
 
 const Header = (props) => {
@@ -101,7 +100,6 @@ const Header = (props) => {
                 <li className="nav-item add_menu">
                   <div>
                     <Button onClick={handleClickOpen}>add receipe</Button>
-                    <Divider />
                     <Dialog
                       style={{ padding: "1rem" }}
                       open={open}

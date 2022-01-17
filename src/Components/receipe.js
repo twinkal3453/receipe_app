@@ -15,6 +15,7 @@ const Receipe = (props) => {
   const handleDelete = (id) => {
     props.deleteChild(id);
   };
+
   return (
     <>
       <div className="container grid_main">
@@ -43,10 +44,12 @@ const Receipe = (props) => {
                       {splitData(item.ingredients)}
                     </Typography>
                   </div>
-                  <DeleteRoundedIcon
-                    onClick={() => handleDelete(item.id)}
-                    className="delete__button"
-                  />
+                  <div className="icon__data">
+                    <DeleteRoundedIcon
+                      onClick={() => handleDelete(item.id)}
+                      className="delete__button"
+                    />
+                  </div>
                 </div>
               </Card>
             );
