@@ -21,6 +21,18 @@
 .delete__button:hover {
   color: red;
 }
+.icon__data {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 0.3rem;
+}
+.edit__button {
+  cursor: pointer;
+  transition: 0.3s;
+}
+.edit__button:hover {
+  color: rgb(24, 255, 24);
+}
 
 @media only screen and (max-width: 770px) {
   .grid_main {

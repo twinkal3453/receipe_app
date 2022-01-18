@@ -7,6 +7,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
+import ModeEditOutlineRoundedIcon from "@mui/icons-material/ModeEditOutlineRounded";
 
 const Receipe = (props) => {
   const splitData = (data) => {
@@ -15,7 +16,9 @@ const Receipe = (props) => {
   const handleDelete = (id) => {
     props.deleteChild(id);
   };
-
+  const handleEdit = (id) => {
+    props.editChild(id);
+  };
   return (
     <>
       <div className="container grid_main">
@@ -45,6 +48,10 @@ const Receipe = (props) => {
                     </Typography>
                   </div>
                   <div className="icon__data">
+                    <ModeEditOutlineRoundedIcon
+                      className="edit__button"
+                      onClick={() => handleEdit(item.id)}
+                    />
                     <DeleteRoundedIcon
                       onClick={() => handleDelete(item.id)}
                       className="delete__button"
